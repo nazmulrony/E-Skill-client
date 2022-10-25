@@ -2,6 +2,7 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { MdOutlineReviews } from 'react-icons/md';
 
+
 const BasicInfo = ({ course }) => {
     const { title, description, rating, reviews, instructor } = course;
     return (

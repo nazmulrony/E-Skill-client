@@ -1,4 +1,5 @@
 import React, { } from 'react';
+import { FaGoogle } from 'react-icons/fa';
 import { Link, } from 'react-router-dom';
 
 
@@ -24,8 +25,8 @@ const Login = () => {
     // }
     return (
         <div className='bg-primary h-[90vh] px-2 '>
-            <div className="bg-secondary text-light max-w-md mx-auto p-4 rounded-lg ">
-                <h2 className='text-center text-3xl mb-2'>Login</h2>
+            <div className="bg-secondary text-light max-w-md mx-auto px-4 py-6 rounded-lg shadow-2xl">
+                <h2 className='text-center text-3xl mb-2 font-semibold'>Login</h2>
                 <form >
                     <div className="flex flex-col mb-3">
                         <label htmlFor="email">Email</label>
@@ -33,20 +34,20 @@ const Login = () => {
                     </div>
                     <div className="flex flex-col mb-3">
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" className='p-2 rounded-md text-secondary' required />
+                        <input type="password" name="password" id="password" className='p-2 rounded-md text-secondary' placeholder='Enter your password' required />
                     </div>
-                    <button type="submit" className=' w-full bg-primary py-2 rounded-md mt-4' >Login</button>
-                    <p className='btn-link-container'><small>New to Ema John? <Link to="/signup" className='btn-link '>Create New Account</Link></small></p>
+                    <button type="submit" className=' w-full bg-primary py-2 rounded-md mt-4 text-[20px] hover:bg-pine duration-100' >Login</button>
+                    <p className='text-center my-2'><small>New to E-Skills? <Link to="/register" className='btn-link '>Create New Account</Link></small></p>
                     <div className='line-break-container'>
                         <hr className='line-break' />
-                        <p>or</p>
+                        <p className='text-center'>or</p>
                         <hr className='line-break' />
                     </div>
                     <div>
 
                     </div>
                 </form >
-                <button className='btn-google'><i className="fab fa-google fa-2x"></i> Continue with Google</button>
+                <button className="btn btn-outline btn-accent w-full my-3"><FaGoogle className='mr-2 text-[20px]' /> Continue with Google</button>
 
             </div>
         </div >

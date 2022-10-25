@@ -7,22 +7,22 @@ import { AuthContext } from '../contexts/AuthProvider';
 
 
 const Header: React.FC = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const [navbar, setNavbar] = useState(false);
 
     const navigate = useNavigate();
 
-    // const handleSignOut = () => {
-    //     logOut()
-    //         .then(() => {
-    //             console.log('Signed Out');
-    //             navigate('/signin');
-    //         })
-    //         .catch((err) => {
-    //             console.error(err);
-    //         });
-    // };
+    const handleSignOut = () => {
+        logOut()
+            .then(() => {
+                console.log('Signed Out');
+                navigate('/signin');
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    };
 
     const navLinks = [
         <div
@@ -32,14 +32,10 @@ const Header: React.FC = () => {
             <Link to={`/home`}>Home</Link>
             <Link to={`/courses`}>Courses</Link>
             <Link to={`/blog`}>Blog</Link>
-            <Link to={`/login`}>Login</Link>
-            <Link to={`/register`}>Register</Link>
-            {/* {user?.uid ? (
-                <span onClick={handleSignOut}>Sign Out</span>
-            ) : (
-                <Link to={`/signin`}>Sign In</Link>
-            )} */}
-            {/* <Link to={`/profile`}>
+            {/* <Link to={`/login`}>Login</Link>
+            <Link to={`/register`}>Register</Link> */}
+
+            <Link to={`/profile`}>
                 <div className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
                     {user?.photoURL ? (
                         <img
@@ -51,7 +47,12 @@ const Header: React.FC = () => {
                         <FaUser />
                     )}
                 </div>
-            </Link> */}
+            </Link>
+            {user?.uid ? (
+                <button onClick={handleSignOut} className="btn btn-sm">Sign Out</button>
+            ) : (
+                <Link to={`/signin`}>Sign In</Link>
+            )}
         </div>,
     ];
 

@@ -30,7 +30,7 @@ const Login = () => {
 
     return (
         <div className='bg-primary h-[90vh] px-2 '>
-            <div className="bg-secondary text-light max-w-md mx-auto px-4 py-6 rounded-lg shadow-2xl">
+            <div className="bg-secondary text-light max-w-md mx-auto p-6 rounded-lg shadow-2xl">
                 <h2 className='text-center text-3xl mb-2 font-semibold'>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="flex flex-col mb-3">

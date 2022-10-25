@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const Register = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext);
+    // reg error state
+    const [error, setError] = useState('')
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, photoURL, email, password);
+        createUser(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                updateUserProfile(name, photoURL);
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+        setError('');
+
+    }
     return (
         <div className='bg-primary min-h-[90vh] px-2 py-4'>
             <div className="bg-secondary text-light max-w-md mx-auto px-4 py-6 rounded-lg shadow-2xl">
                 <h2 className='text-center text-3xl mb-2 font-semibold'>Register</h2>
-                <form >
+                <form onSubmit={handleSubmit}>
                     <div className="flex flex-col mb-3">
                         <label htmlFor="name">Full Name</label>
                         <input type="text" name="name" id="name" placeholder='Enter your full name' className='p-2 rounded-md text-secondary' required />
@@ -24,6 +49,9 @@ const Register = () => {
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" id="password" className='p-2 rounded-md text-secondary' placeholder='Enter your password' required />
                     </div>
+                    {
+                        error && <p className='text-red-600'> {error}</p>
+                    }
                     <button type="submit" className=' w-full bg-primary py-2 rounded-md mt-4 text-[20px] hover:bg-pine duration-100' >Regisiter</button>
                     <p className='text-center my-2'><small>Already have an account? <Link to="/login" className='btn-link '>Login</Link></small></p>
                     <div className='line-break-container'>

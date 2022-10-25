@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import logo from '../assets/logo.png'
+import { useContext } from 'react';
+import { AuthContext } from '../contexts/AuthProvider';
 
 
 const Header: React.FC = () => {
+    const { user } = useContext(AuthContext);
 
     const [navbar, setNavbar] = useState(false);
 
@@ -73,9 +76,9 @@ const Header: React.FC = () => {
                                 onClick={() => setNavbar(!navbar)}
                             >
                                 {navbar ? (
-                                    <FaTimes className="w-6 h-6" />
+                                    <FaTimes className="w-6 h-6  text-secondary" />
                                 ) : (
-                                    <FaBars className="w-6 h-6" />
+                                    <FaBars className="w-6 h-6 text-secondary" />
                                 )}
                             </button>
                         </div>
@@ -83,7 +86,7 @@ const Header: React.FC = () => {
                 </div>
                 <div>
                     <div
-                        className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? 'block' : 'hidden'
+                        className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0  ${navbar ? 'block' : 'hidden'
                             }`}
                     >
                         {navLinks}

@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
+import CourseDetails from "../pages/CourseDetails/CourseDetails";
 import CourseCategory from "../pages/Courses/CourseCategory";
 import Courses from "../pages/Courses/Courses";
 import Home from "../pages/Home";
@@ -39,6 +40,11 @@ export const routes = createBrowserRouter([
                 element: <CourseCategory />,
                 loader: ({ params }) => fetch(`https://e-skill-server-site.vercel.app/category/${params.id}`)
             },
+            {
+                path: '/course/:id',
+                element: <CourseDetails />,
+                loader: ({ params }) => fetch(`https://e-skill-server-site.vercel.app/course/${params.id}`)
+            }
         ]
     }
 ])

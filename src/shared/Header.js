@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
 import logo from '../assets/logo.png'
 import { useContext } from 'react';
@@ -32,26 +32,29 @@ const Header: React.FC = () => {
             <Link to={`/home`}>Home</Link>
             <Link to={`/courses`}>Courses</Link>
             <Link to={`/blog`}>Blog</Link>
-            {/* <Link to={`/login`}>Login</Link>
-            <Link to={`/register`}>Register</Link> */}
 
-            <Link to={`/profile`}>
-                <div className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
-                    {user?.photoURL ? (
-                        <img
-                            className="object-cover w-full h-full"
-                            src={user.photoURL}
-                            alt=""
-                        />
-                    ) : (
-                        <FaUser />
-                    )}
-                </div>
-            </Link>
+            {
+                user?.uid && <Link to={`/profile`}>
+                    <div className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
+                        {user?.photoURL ? (
+                            <img
+                                className="object-cover w-full h-full"
+                                src={user.photoURL}
+                                alt=""
+                            />
+                        ) : (
+                            <FaUser />
+                        )}
+                    </div>
+                </Link>
+            }
             {user?.uid ? (
-                <button onClick={handleSignOut} className="btn btn-sm">Sign Out</button>
+                <button onClick={handleSignOut} className="btn btn-xs hover:text-light">Sign Out</button>
             ) : (
-                <Link to={`/signin`}>Sign In</Link>
+                <>
+                    <Link to={`/login`}>Sign In</Link>
+                    <Link to={`/register`}>Register</Link>
+                </>
             )}
         </div>,
     ];

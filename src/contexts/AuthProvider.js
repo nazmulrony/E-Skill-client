@@ -25,7 +25,7 @@ const AuthProvider = ({ children }) => {
         })
 
     }
-    //signout user 
+    //sign out user 
     const logOut = () => {
         signOut(auth)
             .then(() => { })

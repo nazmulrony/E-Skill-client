@@ -13,13 +13,10 @@ const Header: React.FC = () => {
     const [navbar, setNavbar] = useState(false);
     const [toggle, setToggle] = useState(false)
 
-    const navigate = useNavigate();
-
     const handleSignOut = () => {
         logOut()
             .then(() => {
                 console.log('Signed Out');
-                navigate('/signin');
             })
             .catch((err) => {
                 console.error(err);
@@ -31,13 +28,13 @@ const Header: React.FC = () => {
             className="flex flex-col w-full gap-5 font-semibold md:items-center md:flex-row "
             key={1}
         >
-            <Link to={`/home`}>Home</Link>
-            <Link to={`/courses`}>Courses</Link>
-            <Link to={`/faq`}>FAQ</Link>
-            <Link to={`/blog`}>Blog</Link>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/home`}>Home</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/courses`}>Courses</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/faq`}>FAQ</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/blog`}>Blog</NavLink>
 
             {
-                user?.uid && <Link to={`/profile`}>
+                user?.uid && <NavLink to={`/profile`}>
                     <div className="flex  items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
                         {user?.photoURL ? (
 
@@ -50,14 +47,14 @@ const Header: React.FC = () => {
                             <FaUser />
                         )}
                     </div>
-                </Link>
+                </NavLink>
             }
             {user?.uid ? (
                 <button onClick={handleSignOut} className="btn btn-xs text-gray-400 w-20 hover:text-light">Sign Out</button>
             ) : (
                 <>
-                    <Link to={`/login`}>Sign In</Link>
-                    <Link to={`/register`}>Register</Link>
+                    <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/login`}>Sign In</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/register`}>Register</NavLink>
                 </>
             )}
             <button onClick={() => setToggle(!toggle)} className="h-10 w-10 rounded-full bg-secondary grid place-items-center">

@@ -12,7 +12,7 @@ const CourseCategory = () => {
             </div>
             <div className='col-span-4 grid grid-cols-1 md:col-span-3 md:grid-cols-3 gap-4 p-2 md:pr-10'>
                 {
-                    courses.slice(0, 15).map(course => <CourseCard
+                    courses.map(course => <CourseCard
                         key={course.id} course={course} />)
                 }
             </div>

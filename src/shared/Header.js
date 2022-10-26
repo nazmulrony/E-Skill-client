@@ -5,6 +5,7 @@ import logo from '../assets/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider';
 import { MdDarkMode } from 'react-icons/md';
+import { Tooltip } from 'flowbite-react';
 
 
 const Header: React.FC = () => {
@@ -36,16 +37,18 @@ const Header: React.FC = () => {
             {
                 user?.uid && <NavLink to={`/profile`}>
                     <div className="flex  items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
-                        {user?.photoURL ? (
+                        <Tooltip content={user?.displayName} placement="top">
+                            {user?.photoURL ? (
 
-                            <img
-                                className="object-cover w-full h-full"
-                                src={user.photoURL}
-                                alt=""
-                            />
-                        ) : (
-                            <FaUser />
-                        )}
+                                <img
+                                    className="object-cover w-full h-full"
+                                    src={user.photoURL}
+                                    alt=""
+                                />
+                            ) : (
+                                <FaUser />
+                            )}
+                        </Tooltip>
                     </div>
                 </NavLink>
             }

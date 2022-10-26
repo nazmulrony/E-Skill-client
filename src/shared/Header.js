@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { FaBars, FaTimes, FaUser } from 'react-icons/fa';
+import { FaBars, FaSun, FaTimes, FaUser } from 'react-icons/fa';
 import logo from '../assets/logo.png'
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider';
+import { MdDarkMode } from 'react-icons/md';
 
 
 const Header: React.FC = () => {
     const { user, logOut } = useContext(AuthContext);
 
     const [navbar, setNavbar] = useState(false);
+    const [toggle, setToggle] = useState(false)
 
     const navigate = useNavigate();
 
@@ -58,6 +60,11 @@ const Header: React.FC = () => {
                     <Link to={`/register`}>Register</Link>
                 </>
             )}
+            <button onClick={() => setToggle(!toggle)} className="h-10 w-10 rounded-full bg-secondary grid place-items-center">
+                {
+                    toggle ? <MdDarkMode /> : <FaSun />
+                }
+            </button>
         </div>,
     ];
 
@@ -96,7 +103,9 @@ const Header: React.FC = () => {
                             }`}
                     >
                         {navLinks}
+
                     </div>
+
                 </div>
             </div>
         </nav>

@@ -35,7 +35,7 @@ const Header: React.FC = () => {
             <NavLink className={({ isActive }) => isActive ? 'text-secondary underline underline-offset-2' : undefined} to={`/blog`}>Blog</NavLink>
 
             {
-                user?.uid && <NavLink to={`/profile`}>
+                user?.uid && <span >
                     <div className="flex  items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
                         <Tooltip content={user?.displayName} placement="top">
                             {user?.photoURL ? (
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
                             )}
                         </Tooltip>
                     </div>
-                </NavLink>
+                </span>
             }
             {user?.uid ? (
                 <button onClick={handleSignOut} className="btn btn-xs text-gray-400 w-20 hover:text-light">Sign Out</button>

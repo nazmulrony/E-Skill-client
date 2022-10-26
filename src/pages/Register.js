@@ -67,6 +67,7 @@ const Register = () => {
                     </div>
                     <div className="flex flex-col mb-3">
                         <label htmlFor="photoURL">Photo URL</label>
+                        <input type="text" name="photoURL" id="photoURL" placeholder='Enter your photo URL' className='p-2 rounded-md text-secondary' />
                     </div>
                     <div className="flex flex-col mb-3">
                         <label htmlFor="email">Email</label>
@@ -79,7 +80,7 @@ const Register = () => {
                     {
                         error && <p className='text-red-600'> {error}</p>
                     }
-                    <button type="submit" className=' w-full bg-primary py-2 rounded-md mt-4 text-[20px] hover:bg-pine duration-100' >Regisiter</button>
+                    <button type="submit" className=' w-full bg-primary py-2 rounded-md mt-4 text-[20px] hover:bg-pine duration-100' >Register</button>
                     <p className='text-center my-2'><small>Already have an account? <Link to="/login" className='btn-link '>Login</Link></small></p>
                     <div className='line-break-container'>
                         <hr className='line-break' />

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Register = () => {
     const navigate = useNavigate();
-    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
+    const { createUser, updateUserProfile, googleSignIn, githubSignIn } = useContext(AuthContext);
     // reg error state
     const [error, setError] = useState('')
     const handleSubmit = (event) => {
@@ -42,7 +42,19 @@ const Register = () => {
                 setError(error.message)
                 console.log(error);
             });
-
+    }
+    const handleGithubSignIn = () => {
+        githubSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate('/');
+            })
+            .catch(error => {
+                setError(error.message)
+                console.log(error);
+            });
     }
     return (
         <div className='bg-primary min-h-[90vh] px-2 py-4'>
@@ -79,7 +91,10 @@ const Register = () => {
 
                     </div>
                 </form >
-                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-accent w-full my-3"><FaGoogle className='mr-2 text-[20px]' /> Sign in with Google</button>
+                <div className='flex justify-between gap-6'>
+                    <button onClick={handleGoogleSignIn} className="btn btn-outline btn-accent flex-1  my-3"><FaGoogle className='mr-2 text-[20px]' /> Google</button>
+                    <button onClick={handleGithubSignIn} className="btn btn-outline btn-accent flex-1 my-3"><FaGithub className='mr-2 text-[20px]' />  GitHub</button>
+                </div>
 
             </div>
         </div >

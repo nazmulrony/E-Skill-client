@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate, } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, googleSignIn, githubSignIn } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -22,10 +22,37 @@ const Login = () => {
                 const user = result.user;
                 form.reset();
                 console.log(user);
+                setError('');
                 navigate(from, { replace: true });
             })
             .catch(error => setError(error.message));
-        setError('');
+
+    }
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate('/');
+            })
+            .catch(error => {
+                setError(error.message)
+                console.log(error);
+            });
+    }
+    const handleGithubSignIn = () => {
+        githubSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate('/');
+            })
+            .catch(error => {
+                setError(error.message)
+                console.log(error);
+            });
     }
 
     return (
@@ -52,7 +79,10 @@ const Login = () => {
 
                     </div>
                 </form >
-                <button className="btn btn-outline btn-accent w-full my-3"><FaGoogle className='mr-2 text-[20px]' /> Continue with Google</button>
+                <div className='flex justify-between gap-6'>
+                    <button onClick={handleGoogleSignIn} className="btn btn-outline btn-accent flex-1  my-3"><FaGoogle className='mr-2 text-[20px]' /> Google</button>
+                    <button onClick={handleGithubSignIn} className="btn btn-outline btn-accent flex-1 my-3"><FaGithub className='mr-2 text-[20px]' />  GitHub</button>
+                </div>
 
             </div>
         </div >

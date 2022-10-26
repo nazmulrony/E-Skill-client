@@ -14,7 +14,7 @@ const Home = () => {
             </div>
             <div className='grid place-items-center  md:order-last '>
 
-                <img src={hero} alt="hero-img" className='w-full ' />
+                <img src={hero} alt="hero-img" className='w-2/3  md:w-full ' />
             </div>
 
 

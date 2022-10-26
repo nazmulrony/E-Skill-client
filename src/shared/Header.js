@@ -29,10 +29,10 @@ const Header: React.FC = () => {
             className="flex flex-col w-full gap-5 font-semibold md:items-center md:flex-row "
             key={1}
         >
-            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/home`}>Home</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/courses`}>Courses</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/faq`}>FAQ</NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/blog`}>Blog</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary underline underline-offset-2' : undefined} to={`/home`}>Home</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary underline underline-offset-2' : undefined} to={`/courses`}>Courses</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary underline underline-offset-2' : undefined} to={`/faq`}>FAQ</NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'text-secondary underline underline-offset-2' : undefined} to={`/blog`}>Blog</NavLink>
 
             {
                 user?.uid && <NavLink to={`/profile`}>
@@ -56,8 +56,8 @@ const Header: React.FC = () => {
                 <button onClick={handleSignOut} className="btn btn-xs text-gray-400 w-20 hover:text-light">Sign Out</button>
             ) : (
                 <>
-                    <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/login`}>Sign In</NavLink>
-                    <NavLink className={({ isActive }) => isActive ? 'text-secondary' : undefined} to={`/register`}>Register</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'text-secondary underline underline-offset-2' : undefined} to={`/login`}>Sign In</NavLink>
+                    <NavLink className={({ isActive }) => isActive ? 'text-secondary underline underline-offset-2' : undefined} to={`/register`}>Register</NavLink>
                 </>
             )}
             <button onClick={() => setToggle(!toggle)} className="h-10 w-10 rounded-full bg-secondary grid place-items-center">

@@ -31,12 +31,14 @@ const Header: React.FC = () => {
         >
             <Link to={`/home`}>Home</Link>
             <Link to={`/courses`}>Courses</Link>
+            <Link to={`/faq`}>FAQ</Link>
             <Link to={`/blog`}>Blog</Link>
 
             {
                 user?.uid && <Link to={`/profile`}>
-                    <div className="flex items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
+                    <div className="flex  items-center justify-center w-10 h-10 overflow-hidden rounded-full bg-white/30">
                         {user?.photoURL ? (
+
                             <img
                                 className="object-cover w-full h-full"
                                 src={user.photoURL}
@@ -49,7 +51,7 @@ const Header: React.FC = () => {
                 </Link>
             }
             {user?.uid ? (
-                <button onClick={handleSignOut} className="btn btn-xs hover:text-light">Sign Out</button>
+                <button onClick={handleSignOut} className="btn btn-xs text-gray-400 w-20 hover:text-light">Sign Out</button>
             ) : (
                 <>
                     <Link to={`/login`}>Sign In</Link>

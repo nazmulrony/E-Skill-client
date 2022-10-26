@@ -11,7 +11,7 @@ const Features = ({ features }) => {
                         <li
                             key={index}
                             className="flex items-center gap-1 text-secondary mb-1">
-                            <BsFillPatchCheckFill className='text-primary md:text-dimTeal' /> {feature}
+                            <BsFillPatchCheckFill className='text-secondary md:text-dimTeal' /> {feature}
                         </li>)
                 }
             </ul>

@@ -15,7 +15,7 @@ const options = {
 
 const CourseDetails = () => {
     const course = useLoaderData();
-    const { picture, price, topics, features } = course;
+    const { picture, price, topics, features, id } = course;
     return (
 
         <>
@@ -28,7 +28,7 @@ const CourseDetails = () => {
                         />
                         <BasicInfo course={course} />
                         <div className='md:hidden'>
-                            <PriceButton price={price} className="md:hidden" />
+                            <PriceButton price={price} id={id} className="md:hidden" />
                         </div>
                         <div className='bg-dimTeal md:hidden p-2'>
 
@@ -44,7 +44,7 @@ const CourseDetails = () => {
                                 className='w-full'
                             />
                             <div className='w-full p-4'>
-                                <PriceButton price={price} />
+                                <PriceButton price={price} id={id} />
                                 <Features features={features} />
                             </div>
 
@@ -61,9 +61,11 @@ const CourseDetails = () => {
                     </div>
                 </div>
             </div>
-            <Pdf targetRef={ref} filename="Course Details.pdf" x={0} y={0} scale={1} options={options}>
-                {({ toPdf }) => <button onClick={toPdf} className='bg-primary p-2 rounded-md text-secondary block mx-auto hover:bg-pine duration-100 mt-2'>Download Pdf</button>}
-            </Pdf>
+            <div className='bg-dimTeal m-0 pt-4 pb-8'>
+                <Pdf targetRef={ref} filename="Course Details.pdf" x={0} y={0} scale={1} options={options}>
+                    {({ toPdf }) => <button onClick={toPdf} className='bg-primary p-2 rounded-md text-secondary block mx-auto hover:bg-pine duration-100 mt-2'>Download Pdf</button>}
+                </Pdf>
+            </div>
         </>
     );
 };

@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const { createUser, updateUserProfile, googleSignIn } = useContext(AuthContext);
     // reg error state
     const [error, setError] = useState('')
     const handleSubmit = (event) => {
@@ -21,11 +22,26 @@ const Register = () => {
                 const user = result.user;
                 console.log(user);
                 updateUserProfile(name, photoURL);
+                setError('');
+                navigate('/');
             })
             .catch(error => {
                 setError(error.message);
             })
-        setError('');
+
+    }
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                navigate('/');
+            })
+            .catch(error => {
+                setError(error.message)
+                console.log(error);
+            });
 
     }
     return (
@@ -63,7 +79,7 @@ const Register = () => {
 
                     </div>
                 </form >
-                <button className="btn btn-outline btn-accent w-full my-3"><FaGoogle className='mr-2 text-[20px]' /> Sign in with Google</button>
+                <button onClick={handleGoogleSignIn} className="btn btn-outline btn-accent w-full my-3"><FaGoogle className='mr-2 text-[20px]' /> Sign in with Google</button>
 
             </div>
         </div >

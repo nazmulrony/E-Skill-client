@@ -63,7 +63,9 @@ const CourseDetails = () => {
             </div>
             <div className='bg-dimTeal m-0 pt-4 pb-8'>
                 <Pdf targetRef={ref} filename="Course Details.pdf" x={0} y={0} scale={1} options={options}>
-                    {({ toPdf }) => <button onClick={toPdf} className='bg-primary p-2 rounded-md text-secondary block mx-auto hover:bg-pine duration-100 mt-2'>Download Pdf</button>}
+                    {({ toPdf }) => <button onClick={toPdf} className='bg-primary py-2 px-3 rounded-md text-light block mx-auto hover:bg-pine duration-150 mt-2'>Download Pdf</button>
+
+                    }
                 </Pdf>
             </div>
         </>

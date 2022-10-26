@@ -67,7 +67,6 @@ const Register = () => {
                     </div>
                     <div className="flex flex-col mb-3">
                         <label htmlFor="photoURL">Photo URL</label>
-                        <input type="text" name="photoURL" id="photoURL" placeholder='Enter your photo URL' className='p-2 rounded-md text-secondary' />
                     </div>
                     <div className="flex flex-col mb-3">
                         <label htmlFor="email">Email</label>

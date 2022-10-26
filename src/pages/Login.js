@@ -68,6 +68,9 @@ const Login = () => {
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" id="password" className='p-2 rounded-md text-secondary' placeholder='Enter your password' required />
                     </div>
+                    {
+                        error && <p className='text-red-600'> {error}</p>
+                    }
                     <button type="submit" className=' w-full bg-primary py-2 rounded-md mt-4 text-[20px] hover:bg-pine duration-100' >Login</button>
                     <p className='text-center my-2'><small>New to E-Skills? <Link to="/register" className='btn-link '>Create New Account</Link></small></p>
                     <div className='line-break-container'>

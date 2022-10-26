@@ -21,13 +21,14 @@ const FAQ = () => {
                         <AccordionItemPanel>
                             <p className='px-4 text-gray-300 mt-1'>
                                 Students join our online courses for a variety of reasons and come from diverse backgrounds, professions, and age groups. With online courses, you can-
-                                <ul>
-                                    <li>- Advance your skill-set or begin a career change.</li>
-                                    <li>- Take the next step in your formal education.</li>
-                                    <li>- Ease the transition before entering a full-time academic program.</li>
-                                    <li>- Enjoy learning a new topic.</li>
-                                </ul>
+
                             </p>
+                            <ul className='px-4 text-gray-300 '>
+                                <li>- Advance your skill-set or begin a career change.</li>
+                                <li>- Take the next step in your formal education.</li>
+                                <li>- Ease the transition before entering a full-time academic program.</li>
+                                <li>- Enjoy learning a new topic.</li>
+                            </ul>
                         </AccordionItemPanel>
                     </AccordionItem>
 

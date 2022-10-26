@@ -12,16 +12,10 @@ const Header: React.FC = () => {
     const { user, logOut } = useContext(AuthContext);
 
     const [navbar, setNavbar] = useState(false);
-    const [toggle, setToggle] = useState(false)
+    const [toggle, setToggle] = useState(false);
 
     const handleSignOut = () => {
         logOut()
-            .then(() => {
-                console.log('Signed Out');
-            })
-            .catch((err) => {
-                console.error(err);
-            });
     };
 
     const navLinks = [

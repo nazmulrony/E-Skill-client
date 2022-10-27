@@ -21,4 +21,4 @@
 -   HTML
 -   Tailwind CSS
 -   Express JS
--
+-   Firebase
